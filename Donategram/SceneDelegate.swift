@@ -2,8 +2,8 @@
 //  SceneDelegate.swift
 //  Donategram
 //
-//  Created by Kostya Bershov on 25.05.2020.
-//  Copyright © 2020 Daoinek. All rights reserved.
+//  Created by Yevhenii Kovalenko on 26.05.2020.
+//  Copyright © 2020 Yevhenii Kovalenko. All rights reserved.
 //
 
 import UIKit

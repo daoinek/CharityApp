@@ -2,20 +2,30 @@
 //  AppDelegate.swift
 //  Donategram
 //
-//  Created by Kostya Bershov on 25.05.2020.
-//  Copyright © 2020 Daoinek. All rights reserved.
+//  Created by Yevhenii Kovalenko on 26.05.2020.
+//  Copyright © 2020 Yevhenii Kovalenko. All rights reserved.
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         return true
+    }
+    
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    let handled = GIDSignIn.sharedInstance().handle(url)
+    return handled
+    // return GIDSignIn.sharedInstance().handle(url,
+    // sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+    // annotation: [:])
     }
 
     // MARK: UISceneSession Lifecycle
@@ -31,7 +41,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
